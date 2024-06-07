@@ -12,9 +12,39 @@
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "^1.120.11",
     "eslint": "^9"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/risks"
+  ],
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+              "risk.viewer@tester.sap.com": {
+                  "password": "initial",
+                  "ID": "risk.viewer@tester.sap.com",
+                  "roles": [
+                    "RiskViewer"
+                  ]
+              },
+              "risk.manager@tester.sap.com": {
+                  "password": "initial",
+                  "ID": "risk.manager@tester.sap.com",
+                  "roles": [
+                    "RiskManager"
+                  ]
+              }
+          }
+        }
+      }
+    }
   }
 }
